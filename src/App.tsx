@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { CSSProperties } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { useInteractJS } from './hooks'
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const position = {
+  position: 'relative' as CSSProperties['position']
+  // width: '100%' ,
+  // height: '100%'
 }
 
-export default App;
+const App: React.FC = () => {
+  const int = useInteractJS()
+
+  return (
+    <div className="App">
+      <header className="App-header" style={position}>
+        <button onClick={() => int.enable()}>有効化</button>
+        <button onClick={() => int.disable()}>無効化</button>
+        <div style={position}>
+          <img
+            ref={int.interactRef}
+            style={int.interactStyle}
+            src={logo}
+            className="App-logo"
+            alt="logo"
+          />
+        </div>
+      </header>
+    </div>
+  )
+}
+
+export default App
