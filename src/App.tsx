@@ -10,7 +10,7 @@ const position = {
 }
 
 const App: React.FC = () => {
-  const int = useInteractJS()
+  const int = useInteractJS({width:200})
 
   return (
     <div className="App">

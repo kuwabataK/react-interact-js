@@ -1,21 +1,28 @@
 import { useRef, useEffect, useState, CSSProperties } from 'react'
 import interact from 'interactjs'
 
-const initPosition = () => ({
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+
+const initPosition = {
   width: 100,
   height: 100,
   x: 0,
   y: 0
-})
+}
 
 /**
  * HTML要素を動かせるようにする
  * 返り値で所得できるinteractRefと、interactStyleをそれぞれ対象となるHTML要素の
  * refとstyleに指定することで、そのHTML要素のリサイズと移動が可能になる
- * @param position 
+ * @param position HTML要素の初期座標と大きさ、指定されない場合はinitPositionで指定された値になる
  */
-export function useInteractJS(position = initPosition()) {
-  const [_position, setPosition] = useState(position)
+export function useInteractJS(position: Partial<typeof initPosition> = initPosition) {
+  const [_position, setPosition] = useState({
+    ...initPosition,
+    ...position
+  })
   const [isEnable, setEnable] = useState(true)
 
   const interactRef = useRef(null)
