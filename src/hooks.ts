@@ -14,7 +14,7 @@ const initPosition = {
 
 /**
  * HTML要素を動かせるようにする
- * 返り値で所得できるinteractRefと、interactStyleをそれぞれ対象となるHTML要素の
+ * 返り値で所得できるrefと、styleをそれぞれ対象となるHTML要素の
  * refとstyleに指定することで、そのHTML要素のリサイズと移動が可能になる
  * @param position HTML要素の初期座標と大きさ、指定されない場合はinitPositionで指定された値になる
  */
