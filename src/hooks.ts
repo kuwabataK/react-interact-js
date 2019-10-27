@@ -75,9 +75,12 @@ export function useInteractJS(
     } else {
       disable()
     }
-    return disable
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled])
+
+  useEffect(()=>{
+    return disable
+  },[])
 
   return {
     ref: interactRef,
